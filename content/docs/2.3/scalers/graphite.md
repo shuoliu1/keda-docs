@@ -62,7 +62,6 @@ spec:
       queryTime: '-10Minutes'
 ```
 
-
 Here is an example of a graphite scaler with Basic Authentication, define the `Secret` and `TriggerAuthentication` as follows
 
 ```yaml
