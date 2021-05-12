@@ -32,13 +32,13 @@ triggers:
 
 ### Authentication Parameters
 
-Graphite Scaler supports three types of authentication - basic authentication.
+Graphite Scaler currently only supports basic authentication.
 
 You can use `TriggerAuthentication` CRD to configure the authentication.`authModes: "basic"` Specify `authModes` and other trigger parameters along with secret credentials in `TriggerAuthentication` as mentioned below:
 
 **Basic authentication:**
 - `authMode`: It must contain `basic` in case of Basic Authentication. Specify this in trigger configuration.
-- `username`: This is a required field. Provide the username to be used for basic authentication.
+- `username`: Username to be used for basic authentication. (required)
 - `password`: Provide the password to be used for authentication. For convenience, this has been marked optional, because many applications implement basic auth with a username as apikey and password as empty.
 
 ### Example
@@ -104,10 +104,10 @@ spec:
     - type: graphite
       metadata:
         serverAddress: http://<graphite-host>:9090
-      metricName: request-count
-      threshold: '100'
-      query: stats.counters.http.hello-world.request.count.count
-      queryTime: '-10Minutes'
+        metricName: request-count
+        threshold: '100'
+        query: stats.counters.http.hello-world.request.count.count
+        queryTime: '-10Minutes'
       authenticationRef:
         name: keda-graphite-creds
 ```
